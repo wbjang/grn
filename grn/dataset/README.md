@@ -1,4 +1,0 @@
-# Dataset
-
-### cora 
-### citeseer
