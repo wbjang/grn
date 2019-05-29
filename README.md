@@ -4,7 +4,7 @@ With the Cora dataset, we achieved around 83.6% average.
 
 You can easily train the model by
 
-*python train.py*
+**python train.py**
 
 
 Hyperparameters are
@@ -14,6 +14,6 @@ Hyperparameters are
 * d1, d2 : 0.2 , d3: 0.4 (Dropout rates for RNN, Attention, Dense respectively)
 * lr: 1e-2 (Learning rate)
 * wd: 1e-2 (Weight decay)
-* ps: 5 (Patience)
+* ps: 5 (Patience for early-stopping)
 
 
