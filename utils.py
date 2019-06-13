@@ -69,6 +69,12 @@ def split_idx(n_train, n_val, n_test):
     idx_test = idx_shuffle[test]
     return idx_train, idx_val, idx_test
 
+"""
+Below three functions are from https://github.com/tkipf/gcn
+I've modified load_data function.
+"""
+
+
 def parse_index_file(filename):
     """Parse index file."""
     index = []
