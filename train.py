@@ -125,7 +125,7 @@ class earlystopping():
                 return False
 
 
-
+"""
 features_, labels_, adj, deg, deg_inv = load_cora()
 P = torch.from_numpy(deg_inv.dot(adj.todense()))
 features = torch.from_numpy(features_.todense())
@@ -161,3 +161,5 @@ l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, lr, wd, ps ,idx_
 
 ### Draw the loss / accuracy
 draw(l_train, l_val, acc_val)
+
+"""
