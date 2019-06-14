@@ -66,7 +66,7 @@ def draw(l_train, l_val, acc_val):
     plt.show()
     
 
-def train(model, n_iters, n_hids, n_epochs, lr_, w_, p, idx_train_, idx_val_, idx_test_, earlystop=True):
+def train(model, n_iters, n_hids, n_epochs, features, P, lr_, w_, p, idx_train_, idx_val_, idx_test_, earlystop=True):
     """
     Train function
     Input: Model, n_iters, n_hids, n_epochs, lr_, w_, run, idx_train_, idx_val_, idx_test_, p
@@ -98,7 +98,7 @@ def train(model, n_iters, n_hids, n_epochs, lr_, w_, p, idx_train_, idx_val_, id
             stop = es.test(loss_list_val)
             if stop:
                 break
-    t_loss, t_acc = test(model, X, idx_test_)
+    #t_loss, t_acc = test(model, X, idx_test_)
     return loss_list_train, loss_list_val, acc_list_val
 
 
