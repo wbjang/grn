@@ -35,7 +35,7 @@ def accuracy(output, labels): # From GCN pytorch code - https://github.com/tkipf
     correct = correct.sum()
     return correct / len(labels)
 
-def test(model, X, idx_test_):
+def test(model, X, labels, idx_test_):
     """
     Input: model, X, idx_test_(index for test data)
     Output: Loss, Accuracy
