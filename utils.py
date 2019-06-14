@@ -57,7 +57,7 @@ def deg_matrix(adj):
     deg_inv_sp = sp.csr_matrix(deg_inv)
     return deg_sp, deg_inv_sp
 
-def split_idx(n_train, n_val, n_test):
+def split_idx(n_train, n_val, n_test, n_total):
     """
     Generate the train / val / test split using the randomized index
     Cora: 140 / 500 / 1000
@@ -68,7 +68,7 @@ def split_idx(n_train, n_val, n_test):
     train = np.arange(n1)
     val = np.arange(n1+1, n2)
     test = np.arange(n2+1, n3)
-    idx_shuffle = np.random.choice(n3, n3, replace=False)
+    idx_shuffle = np.random.choice(n_total, n3, replace=False)
     idx_train = idx_shuffle[train]
     idx_val = idx_shuffle[val]
     idx_test = idx_shuffle[test]
