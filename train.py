@@ -66,7 +66,7 @@ def draw(l_train, l_val, acc_val):
     plt.show()
     
 
-def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx_train_, idx_val_, idx_test_, earlystop=True):
+def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx_train_, idx_val_, earlystop=True):
     """
     Train function
     Input: Model, n_iters, n_hids, n_epochs, lr_, w_, run, idx_train_, idx_val_, idx_test_, p
