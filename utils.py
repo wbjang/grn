@@ -142,5 +142,5 @@ def load_data(dataset_str):
     labels_ = np.zeros((labels.shape[0],))
     for i in range(labels.shape[1]):
       labels_[labels[:,i]==1] = np.int(i)
-      
-    return adj, features, labels_
+    deg, deg_inv = deg_matrix(adj)  
+    return adj, features, deg_, deg_inv, labels_
