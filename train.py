@@ -7,6 +7,7 @@ from utils import load_cora, adj_matrix, deg_matrix, split_idx
 from models import GRN
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 
 def unroll(X, P, n_iters):
@@ -66,13 +67,15 @@ def draw(l_train, l_val, acc_val):
     plt.show()
     
 
-def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx_train_, idx_val_, earlystop=True):
+def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx_train_, idx_val_, timecheck=False):
     """
     Train function
     Input: Model, n_iters, n_hids, n_epochs, lr_, w_, run, idx_train_, idx_val_, idx_test_, p
     Output: train_loss, val_loss, val_accuracy, test_loss, test_accuracy [all : list]
     Print the loss / accuracy after finishing the training
     """
+    if timecheck:
+        t = time.time()
     X = unroll(features, P, n_iters)
     g_op = optim.Adam(model.parameters(), lr=lr_, weight_decay = w_)
     loss_list_train = []
@@ -94,12 +97,14 @@ def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx
         acc_val = accuracy(outs[idx_val_], labels[idx_val_])
         loss_list_val.append(loss_val.item())
         acc_list_val.append(acc_val.item())
-        if earlystop:
-            stop = es.test(loss_list_val)
-            if stop:
-                break
+        stop = es.test(loss_list_val)
+        if stop:
+            break
     #t_loss, t_acc = test(model, X, idx_test_)
-    return loss_list_train, loss_list_val, acc_list_val
+    if timecheck:
+        return loss_list_train, loss_list_val, acc_list_val, time.time() - t
+    else:
+        return loss_list_train, loss_list_val, acc_list_val
 
 
 class earlystopping():
