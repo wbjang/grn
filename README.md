@@ -26,3 +26,4 @@ The data set has the interesting property - as the data points jump according to
 
 ![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)
 
+The above figures are t-SNE visualization of the data points jumping over 1 time(left) and 10 times(right), and colored with their labels. After 10 iterations, the data points cluster over a few centres. 
