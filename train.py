@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 import torch.optim as optim
-from utils import load_cora, adj_matrix, deg_matrix, split_idx
+from utils import load_cora, adj_matrix, deg_matrix, split_idx, load_data
 from models import GRN
 import numpy as np
 import matplotlib.pyplot as plt
