@@ -173,7 +173,7 @@ if torch.cuda.is_available():
 idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 
 ### Train the model
-l_train, l_val, acc_val = train(grn, n_iter, n_hids, n_epochs, features, P, labels, lr, wd, ps ,idx_train_, idx_val_)
+l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, features, P, labels, lr, wd, ps ,idx_train_, idx_val_)
 t_loss, t_acc = test(grn, X, labels, idx_test_)
 
 
