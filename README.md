@@ -4,7 +4,7 @@ With the Cora dataset, we achieved around 83.7% average.
 
 You can easily train the model by
 
-> cd grn
+> cd grn <br/>
 > python train.py 
 
 
