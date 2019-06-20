@@ -4,7 +4,6 @@ import scipy.sparse as sp
 import sys
 import pickle as pkl
 import networkx as nx
-from scipy.sparse.linalg.eigen.arpack import eigsh
 
 
 path = 'dataset/cora/'
