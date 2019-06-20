@@ -141,7 +141,7 @@ parser.add_argument('--d1', type=float, default=0.2)
 parser.add_argument('--d2', type=float, default=0.2)
 parser.add_argument('--d3', type=float, default=0.4)
             
-
+arg = parser.parse_args()
 features_, labels_, adj, deg, deg_inv = load_data(arg.dataset)
 P = torch.from_numpy(deg_inv.dot(adj.todense()))
 features = torch.from_numpy(features_.todense())
