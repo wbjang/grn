@@ -22,5 +22,7 @@ The default hyperparameters for Cora dataset are
 
 GRN is based on the simple RNN followed by two dense layers for attention and for classification separately. It incorporates the convolutional operations in RNN framework, and achieves the comparable performances with the existing models like GCN(Graph Convolutoinal Networks) and GAT(Graph Attention Networks) for Cora, Citeseer and Pubmed dataset where the adjacency matrix is fixed. GRN also computes quite fast even though it is based on RNN model.
 
+The data set has the interesting property - as the data points jump according to the randon-walk transition matrix, and they cluster over a few centres within 10 iterations.
 
+![How they cluster over a few points](cora-10.png)
 
