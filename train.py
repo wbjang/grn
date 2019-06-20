@@ -131,15 +131,15 @@ class earlystopping():
                 return False
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--lr', type=float, default=1e-2)
-parser.add_argument('--wd', type=float, default=1e-2)
-parser.add_argument('--n_hid', type=int, default=112)
-parser.add_argument('--n_iter', type=int, default=9)
-parser.add_argument('--dataset', type=str, default='cora')
-parser.add_argument('--ps', type=int, default=5)
-parser.add_argument('--d1', type=float, default=0.2)
-parser.add_argument('--d2', type=float, default=0.2)
-parser.add_argument('--d3', type=float, default=0.4)
+parser.add_argument('--lr', type=float, default=1e-2, help='Learning rate for the parameters')
+parser.add_argument('--wd', type=float, default=1e-2, help='Weight decay for the parameters')
+parser.add_argument('--n_hid', type=int, default=112, help='hidden layer for RNN')
+parser.add_argument('--n_iter', type=int, default=9, help='time-steps for RNN')
+parser.add_argument('--dataset', type=str, default='cora', help='dataset, also use "citeseer" or "pubmed"')
+parser.add_argument('--ps', type=int, default=5, help='patience for early stopping')
+parser.add_argument('--d1', type=float, default=0.2, help='dropout rate for RNN')
+parser.add_argument('--d2', type=float, default=0.2, help='dropout rate for dense(attention)')
+parser.add_argument('--d3', type=float, default=0.4, help='dropout rate for dense(classification)')
             
 arg = parser.parse_args()
 features_, labels_, adj, deg, deg_inv = load_data(arg.dataset)
@@ -161,7 +161,6 @@ ps = arg.ps #Patience rate for Early Stopping
 
 ### Making the Model
 grn = GRN(n_iters, n_nodes, n_feats, n_hids, n_class, d1, d2, d3)
-X = unroll(features, P, n_iters)
 
 ### If you have GPU,
 if torch.cuda.is_available():
@@ -174,6 +173,7 @@ if torch.cuda.is_available():
 idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 
 ### Train the model
+X = unroll(features, P, n_iters)
 l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, X, labels, lr, wd, ps ,idx_train_, idx_val_)
 t_loss, t_acc = test(grn, X, labels, idx_test_)
 
