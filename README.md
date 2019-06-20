@@ -17,7 +17,7 @@ or with the hyper-parameters as
 The default hyperparameters for Cora dataset are
 
 * n_hids : 112
-* n_iters: 9
+* n_iters: 9 (Actually, it corresponds to T=8)
 * d1, d2 : 0.2 , d3: 0.4 (Dropout rates for RNN, Attention, Dense respectively)
 * lr: 1e-2 (Learning rate)
 * wd: 1e-2 (Weight decay)
