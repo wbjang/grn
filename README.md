@@ -24,5 +24,5 @@ GRN is based on the simple RNN followed by two dense layers for attention and fo
 
 The data set has the interesting property - as the data points jump according to the randon-walk transition matrix, and they cluster over a few centres within 10 iterations.
 
-![How they cluster over a few points](cora-10.png)
+![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)
 
