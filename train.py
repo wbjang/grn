@@ -145,7 +145,7 @@ arg = parser.parse_args()
 features_, labels_, adj, deg, deg_inv = load_data(arg.dataset)
 P = torch.from_numpy(deg_inv.dot(adj.todense()))
 features = torch.from_numpy(features_.todense())
-labels = torch.from_numpy(labels_)
+labels = torch.from_numpy(labels_).long()
 n_nodes, n_feats = features_.shape[0], features_.shape[1]
 n_class = np.int(np.max(labels_) + 1)
 ### Belows are the hyperparameters
@@ -172,7 +172,6 @@ if torch.cuda.is_available():
 ### Get the train / val / test split
 idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 
-print(n_iters)
 ### Train the model
 l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, features, P, labels, lr, wd, ps ,idx_train_, idx_val_)
 t_loss, t_acc = test(grn, X, labels, idx_test_)
