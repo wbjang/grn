@@ -9,7 +9,7 @@ You can easily train the model by
 
 or with the hyper-parameters as 
 
-> **python train.py --wd 1e-2 --lr 1e-2 --ps 5 --d1 0.2 --d2 0.2 --d3 0.4 --n_iters 3 --dataset "cora"
+> **python train.py --wd 1e-2 --lr 1e-2 --ps 5 --d1 0.2 --d2 0.2 --d3 0.4 --n_iters 3 --dataset "cora"**
 
 Hyperparameters are
 * n_hids : 112
