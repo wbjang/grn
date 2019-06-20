@@ -4,7 +4,8 @@ With the Cora dataset, we achieved around 83.7% average.
 
 You can easily train the model by
 
-**python train.py**
+> cd grn
+> python train.py 
 
 
 Hyperparameters are
