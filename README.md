@@ -6,10 +6,9 @@ With the Cora dataset, we achieved around 83.7% average.
 
 You can easily train the model by
 
-'''
 > **cd grn** <br/>
 > **python train.py** 
-'''
+
 
 or with the hyper-parameters as 
 
@@ -23,6 +22,7 @@ The default hyperparameters for Cora dataset are
 * lr: 1e-2 (Learning rate)
 * wd: 1e-2 (Weight decay)
 * ps: 5 (Patience for early-stopping)
+* dataset: "cora" (or "citeseer", "pubmed")
 
 ---
 #### Introduction
