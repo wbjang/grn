@@ -27,12 +27,12 @@ The default hyperparameters for Cora dataset are
 ---
 #### Introduction
 
-GRN is based on the simple RNN followed by two dense layers for attention and for classification separately. It incorporates the convolutional operations in RNN framework, and achieves the comparable performances with the existing models like GCN(Graph Convolutoinal Networks) and GAT(Graph Attention Networks) for Cora, Citeseer and Pubmed dataset where the adjacency matrix is fixed. GRN also computes quite fast even though it is based on RNN model.
+GRN incorporates the convolutional operations in RNN framework, and achieves the comparable performances with the existing models like GCN(Graph Convolutoinal Networks) and GAT(Graph Attention Networks) for Cora, Citeseer and Pubmed dataset where the adjacency matrix is fixed. GRN also computes quite fast even though it is based on RNN model.
 
 ---
 #### Random-walk transition matrices
 
-The data set has the interesting property - as the data points jump according to the randon-walk transition matrix ($P=D^{-1}A$, where $D$ is the degree matrix, and $A$ is the adjacency matrix), and they cluster over a few centres within 10 iterations.
+The data set has the interesting property - as the data points jump according to the randon-walk transition matrix, and they cluster over a few centres within 10 iterations.
 
 ![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)
 
@@ -40,4 +40,7 @@ The above figures are t-SNE visualization of the data points jumping over 1 time
 
 ---
 #### Model
+
+GRN consists of one simple RNN and two dense layers for computing the attention and the scores. The architecture of the model is as below.
+
 ![The overall architecture of GRN](https://github.com/wayne1123/grn/blob/master/imgs/model.png)
