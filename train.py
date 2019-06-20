@@ -68,7 +68,7 @@ def draw(l_train, l_val, acc_val):
     plt.show()
     
 
-def train(model, n_iters, n_hids, n_epochs, features, P, labels, lr_, w_, p, idx_train_, idx_val_, timecheck=False):
+def train(model, n_iters, n_hids, n_epochs, X, labels, lr_, w_, p, idx_train_, idx_val_, timecheck=False):
     """
     Train function
     Input: Model, n_iters, n_hids, n_epochs, lr_, w_, run, idx_train_, idx_val_, idx_test_, p
@@ -161,6 +161,7 @@ ps = arg.ps #Patience rate for Early Stopping
 
 ### Making the Model
 grn = GRN(n_iters, n_nodes, n_feats, n_hids, n_class, d1, d2, d3)
+X = unroll(features, P, n_iters)
 
 ### If you have GPU,
 if torch.cuda.is_available():
@@ -173,7 +174,7 @@ if torch.cuda.is_available():
 idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 
 ### Train the model
-l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, features, P, labels, lr, wd, ps ,idx_train_, idx_val_)
+l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, X, labels, lr, wd, ps ,idx_train_, idx_val_)
 t_loss, t_acc = test(grn, X, labels, idx_test_)
 
 
