@@ -1,4 +1,4 @@
-## Graph Recurrent Networks for Node Classifications
+## Graph Recurrent Networks for Node Classifications (GRN)
 
 With the Cora dataset, we achieved around 83.7% average.
 
@@ -20,9 +20,13 @@ The default hyperparameters for Cora dataset are
 * wd: 1e-2 (Weight decay)
 * ps: 5 (Patience for early-stopping)
 
+#### Introduction
+
 GRN is based on the simple RNN followed by two dense layers for attention and for classification separately. It incorporates the convolutional operations in RNN framework, and achieves the comparable performances with the existing models like GCN(Graph Convolutoinal Networks) and GAT(Graph Attention Networks) for Cora, Citeseer and Pubmed dataset where the adjacency matrix is fixed. GRN also computes quite fast even though it is based on RNN model.
 
-The data set has the interesting property - as the data points jump according to the randon-walk transition matrix, and they cluster over a few centres within 10 iterations.
+#### Random-walk transition matrices
+
+The data set has the interesting property - as the data points jump according to the randon-walk transition matrix ($P=D^{-1}A$, where $D$ is the degree matrix, and $A$ is the adjacency matrix), and they cluster over a few centres within 10 iterations.
 
 ![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)
 
