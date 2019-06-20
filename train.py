@@ -8,6 +8,7 @@ from models import GRN
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+import argparse
 
 
 def unroll(X, P, n_iters):
@@ -129,24 +130,34 @@ class earlystopping():
             else:
                 return False
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--lr', type=float, default=1e-2)
+parser.add_argument('--wd', type=float, default=1e-2)
+parser.add_argument('--n_hid', type=int, default=112)
+parser.add_argument('--n_iter', type=int, default=9)
+parser.add_argument('--dataset', type=str, default='cora')
+parser.add_argument('--ps', type=int, default=5)
+parser.add_argument('--d1', type=float, default=0.2)
+parser.add_argument('--d2', type=float, default=0.2)
+parser.add_argument('--d3', type=float, default=0.4)
+            
 
-"""
-features_, labels_, adj, deg, deg_inv = load_cora()
+features_, labels_, adj, deg, deg_inv = load_data(arg.dataset)
 P = torch.from_numpy(deg_inv.dot(adj.todense()))
 features = torch.from_numpy(features_.todense())
 labels = torch.from_numpy(labels_)
 n_nodes, n_feats = features_.shape[0], features_.shape[1]
-n_class = np.max(labels_) + 1
+n_class = np.int(np.max(labels_) + 1)
 ### Belows are the hyperparameters
-n_hids = 112
-n_iters = 7
-d1 = 0.2 # Dropout rate for RNN
-d2 = 0.2 # Dropout rate for attention
-d3 = 0.4 # Dropout rate for dense(classification)
-n_epochs = 200
-lr = 1e-2 # Learning rate for the parameters
-wd = 1e-2 # Weight decay for the parameters
-ps = 5 #Patience rate for Early Stopping
+n_hids = arg.n_hid
+n_iters = arg.n_iter
+d1 = arg.d1 # Dropout rate for RNN
+d2 = arg.d2 # Dropout rate for attention
+d3 = arg.d3 # Dropout rate for dense(classification)
+n_epochs = arg.n_iter
+lr = arg.lr # Learning rate for the parameters
+wd = arg.wd # Weight decay for the parameters
+ps = arg.ps #Patience rate for Early Stopping
 
 ### Making the Model
 grn = GRN(n_iters, n_nodes, n_feats, n_hids, n_class, d1, d2, d3)
@@ -159,12 +170,10 @@ if torch.cuda.is_available():
     grn = grn.cuda()
 
 ### Get the train / val / test split
-idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000)
+idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 
 ### Train the model
-l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, lr, wd, ps ,idx_train_, idx_val_, idx_test_)
+l_train, l_val, acc_val = train(grn, n_iter, n_hids, n_epochs, features, P, labels, lr, wd, ps ,idx_train_, idx_val_)
+t_loss, t_acc = test(grn, X, labels, idx_test_)
 
-### Draw the loss / accuracy
-draw(l_train, l_val, acc_val)
 
-"""
