@@ -176,5 +176,5 @@ idx_train_, idx_val_, idx_test_ = split_idx(140, 500, 1000, n_nodes)
 X = unroll(features, P, n_iters)
 l_train, l_val, acc_val = train(grn, n_iters, n_hids, n_epochs, X, labels, lr, wd, ps ,idx_train_, idx_val_)
 t_loss, t_acc = test(grn, X, labels, idx_test_)
-print(str(lr) + " " + str(wd) + " " + str(ps) + " " + str(n_hids) + " " + str(d1) + " " + str(d2) + " " + str(d3) + " " + str(n_iters))
+#print(str(lr) + " " + str(wd) + " " + str(ps) + " " + str(n_hids) + " " + str(d1) + " " + str(d2) + " " + str(d3) + " " + str(n_iters))
 
