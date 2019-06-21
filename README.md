@@ -2,8 +2,6 @@
 
 #### Run the model
 
-With the Cora dataset, we achieved around 83.7% average.
-
 You can easily train the model by
 
 > **cd grn** <br/>
@@ -34,7 +32,8 @@ GRN incorporates the convolutional operations in RNN framework, and achieves the
 
 The data set has the interesting property - as the data points jump according to the randon-walk transition matrix, and they cluster over a few centres within 10 iterations.
 
-![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)
+![How they cluster over a few points with Cora dataset](https://github.com/wayne1123/grn/blob/master/imgs/cora-10.png)<br/>
+     <1-jump>                         <10-jumps>
 
 The above figures are t-SNE visualization of the data points jumping over 1 time(left) and 10 times(right), and colored with their labels. After 10 iterations, the data points cluster over a few centres. 
 
