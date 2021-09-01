@@ -1,5 +1,9 @@
 ## Graph Recurrent Networks for Node Classifications (GRN)
 
+### Paper 
+
+Please see the GRF.pdf file
+
 #### Run the model
 
 You can easily train the model by
