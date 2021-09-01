@@ -2,7 +2,7 @@
 
 ### Paper 
 
-Please see the GRF.pdf file
+Please see the GRF.pdf file - https://github.com/wayne1123/grn/blob/master/GRN.pdf
 
 #### Run the model
 
